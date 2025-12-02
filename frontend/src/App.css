@@ -1,0 +1,68 @@
+.app {
+  height: 100vh;
+  background-color: #343541;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Application header */
+.app-header {
+  background-color: #202123;
+  border-bottom: 1px solid #4d4d4f;
+  padding: 1rem 1.5rem;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.app-header-content {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-title {
+  color: #ececf1;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.app-subtitle {
+  color: #8e8ea0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Custom scrollbar for main content */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #565869;
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #4d4d4f;
+}

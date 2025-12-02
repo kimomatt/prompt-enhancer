@@ -1,0 +1,698 @@
+/* Agent Reasoning Modal Styles */
+
+.agent-reasoning-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: opacity 0.2s ease-out, 
+              backdrop-filter 0.2s ease-out,
+              background-color 0.2s ease-out;
+}
+
+.agent-reasoning-modal-overlay.fade-in {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.agent-reasoning-modal-card {
+  position: relative;
+  max-width: 1024px; /* max-w-5xl */
+  width: 90%;
+  margin: 0 1rem;
+  border-radius: 1rem; /* rounded-2xl */
+  background-color: #18181b; /* bg-zinc-900 */
+  border: 1px solid #27272a; /* border-zinc-800 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: scale(0.96) translateY(8px);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.agent-reasoning-modal-card.slide-in {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.agent-reasoning-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem; /* p-6 */
+  border-bottom: 1px solid #27272a; /* border-zinc-800 */
+}
+
+.agent-reasoning-modal-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #f4f4f5; /* text-zinc-100 */
+  margin: 0;
+}
+
+.agent-reasoning-modal-subtitle {
+  font-size: 0.75rem; /* text-xs */
+  color: #a1a1aa; /* text-zinc-400 */
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+.agent-reasoning-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px; /* rounded-full */
+  background-color: rgba(16, 185, 129, 0.1); /* bg-emerald-500/10 */
+  border: 1px solid rgba(16, 185, 129, 0.7); /* border-emerald-500/70 */
+  padding: 0.25rem 0.75rem; /* px-3 py-1 */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 500; /* font-medium */
+  color: #6ee7b7; /* text-emerald-300 */
+  margin-top: 0.25rem;
+}
+
+.agent-reasoning-modal-close {
+  background: none;
+  border: none;
+  color: #a1a1aa; /* text-zinc-400 */
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.agent-reasoning-modal-close:hover {
+  color: #f4f4f5; /* text-zinc-100 */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.agent-reasoning-modal-close:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #10a37f, 0 0 0 4px rgba(16, 163, 127, 0.2);
+}
+
+.agent-reasoning-modal-close-icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.agent-reasoning-modal-content {
+  padding: 1.5rem; /* p-6 */
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+/* Decision Rationale Section */
+.agent-reasoning-decision-rationale {
+  margin-bottom: 1rem;
+}
+
+.agent-reasoning-decision-rationale-card {
+  border-radius: 0.75rem; /* rounded-xl */
+  border: 1px solid rgba(16, 185, 129, 0.5); /* border-emerald-500/50 */
+  background-color: rgba(15, 23, 42, 0.8); /* bg-slate-900/80 */
+  padding: 1rem; /* px-4 py-3 */
+}
+
+.agent-reasoning-decision-rationale-title {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  color: #f4f4f5; /* text-zinc-50 */
+  margin: 0 0 0.25rem 0;
+}
+
+.agent-reasoning-decision-rationale-text {
+  margin-top: 0.25rem;
+  font-size: 0.75rem; /* text-xs */
+  color: #d4d4d8; /* text-zinc-300 */
+  line-height: 1.625; /* leading-relaxed */
+}
+
+@media (min-width: 640px) {
+  .agent-reasoning-decision-rationale-text {
+    font-size: 0.8rem; /* sm:text-[0.8rem] */
+  }
+}
+
+.agent-reasoning-step {
+  background-color: rgba(24, 24, 27, 0.7); /* bg-zinc-900/70 */
+  border: 1px solid #27272a; /* border-zinc-800 */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 1rem; /* p-4 */
+  margin-bottom: 1.5rem; /* space-y-6 */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+@media (min-width: 768px) {
+  .agent-reasoning-step {
+    padding: 1.25rem; /* md:p-5 */
+  }
+}
+
+.agent-reasoning-step.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.agent-reasoning-step.fade-in {
+  animation: stepFadeIn 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.agent-reasoning-step-header {
+  margin-bottom: 1rem;
+}
+
+.agent-reasoning-step-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.agent-reasoning-step-number {
+  font-size: 0.75rem; /* text-xs */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* tracking-wider */
+  color: #a1a1aa; /* text-zinc-400 */
+  font-weight: 600; /* font-semibold */
+}
+
+.agent-reasoning-step-separator {
+  color: #52525b; /* text-zinc-600 */
+}
+
+.agent-reasoning-step-title {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  color: #e4e4e7; /* text-zinc-200 */
+}
+
+.agent-reasoning-step-divider {
+  height: 1px;
+  background-color: #27272a; /* bg-zinc-800 */
+}
+
+.agent-reasoning-step-body {
+  margin-top: 1rem;
+}
+
+/* Step 1: Intent & Topic */
+.agent-reasoning-intent-topic-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.agent-reasoning-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.agent-reasoning-field-label {
+  font-size: 0.75rem; /* text-xs */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* tracking-wider */
+  color: #a1a1aa; /* text-zinc-400 */
+  font-weight: 500; /* font-medium */
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.agent-reasoning-chip {
+  padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
+  background-color: rgba(39, 39, 42, 0.5); /* bg-zinc-800/50 */
+  border: 1px solid #3f3f46; /* border-zinc-700 */
+  border-radius: 0.5rem; /* rounded-lg */
+  display: inline-block;
+}
+
+.agent-reasoning-chip-text {
+  color: #f4f4f5; /* text-zinc-100 */
+  font-weight: 500; /* font-medium */
+}
+
+.agent-reasoning-summary {
+  font-size: 0.875rem; /* text-sm */
+  color: #d4d4d8; /* text-zinc-300 */
+  line-height: 1.625; /* leading-relaxed */
+  margin-bottom: 0.75rem;
+}
+
+.agent-reasoning-ready {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #34d399; /* text-emerald-400 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.agent-reasoning-ready-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Step 2: Reasoning Bullets */
+.agent-reasoning-bullets-intro {
+  font-size: 0.875rem; /* text-sm */
+  color: #d4d4d8; /* text-zinc-300 */
+  line-height: 1.625; /* leading-relaxed */
+  margin-bottom: 0.5rem;
+}
+
+.agent-reasoning-bullets-list {
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 0.875rem; /* text-sm */
+  color: #e4e4e7; /* text-zinc-200 */
+  line-height: 1.625; /* leading-relaxed */
+}
+
+@media (min-width: 768px) {
+  .agent-reasoning-bullets-list {
+    font-size: 0.9rem; /* md:text-[0.9rem] */
+  }
+}
+
+.agent-reasoning-bullets-list li {
+  margin-bottom: 0.375rem; /* space-y-1.5 */
+}
+
+.agent-reasoning-bullets-empty {
+  font-size: 0.875rem; /* text-sm */
+  color: #a1a1aa; /* text-zinc-400 */
+  font-style: italic;
+}
+
+.agent-reasoning-bullets-section {
+  margin-top: 0.75rem;
+}
+
+/* Step 3: Compare Prompts */
+.agent-reasoning-prompt-comparison {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; /* gap-4 */
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .agent-reasoning-prompt-comparison {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; /* md:gap-6 */
+  }
+}
+
+.agent-reasoning-prompt-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.agent-reasoning-prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.agent-reasoning-prompt-label {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  color: #e4e4e7; /* text-zinc-200 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* tracking-wide */
+  flex: 1;
+}
+
+.agent-reasoning-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.agent-reasoning-regenerate-btn {
+  background-color: #40414f;
+  border: 1px solid #565869;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8e8ea0;
+  flex-shrink: 0;
+}
+
+.agent-reasoning-regenerate-btn:hover:not(:disabled) {
+  background-color: #565869;
+  border-color: #8b5cf6;
+  color: #a78bfa;
+  transform: scale(1.05);
+}
+
+.agent-reasoning-regenerate-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.agent-reasoning-regenerate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.agent-reasoning-regenerate-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform 0.2s;
+}
+
+.agent-reasoning-regenerate-btn:hover:not(:disabled) .agent-reasoning-regenerate-icon {
+  transform: rotate(90deg);
+}
+
+.agent-reasoning-regenerate-icon.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.agent-reasoning-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a1a1a;
+  color: #ececf1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+  transform: translateX(-50%) translateY(-4px);
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid #4d4d4f;
+}
+
+.agent-reasoning-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+}
+
+.agent-reasoning-tooltip-wrapper:hover .agent-reasoning-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.agent-reasoning-prompt-box {
+  background-color: rgba(24, 24, 27, 0.6); /* bg-zinc-900/60 */
+  border: 1px solid #27272a; /* border-zinc-800 */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 0.75rem; /* p-3 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625; /* leading-relaxed */
+  max-height: 14rem; /* max-h-56 */
+  overflow: auto;
+  color: #d4d4d8; /* text-zinc-300 */
+  white-space: pre-wrap;
+  font-family: inherit;
+}
+
+.agent-reasoning-prompt-textarea {
+  background-color: rgba(52, 53, 65, 1); /* #343541 */
+  border: 1px solid #4d4d4f;
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 0.75rem; /* p-3 */
+  color: #ececf1;
+  font-size: 0.875rem; /* text-sm */
+  font-family: inherit;
+  line-height: 1.6;
+  min-height: 150px;
+  max-height: 300px;
+  width: 100%;
+  resize: vertical;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+.agent-reasoning-prompt-textarea:focus {
+  outline: none;
+  border-color: #10a37f;
+  box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+}
+
+.agent-reasoning-prompt-textarea::placeholder {
+  color: #8e8ea0;
+}
+
+.agent-reasoning-prompt-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.agent-reasoning-prompt-regenerating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.agent-reasoning-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: #8e8ea0;
+}
+
+.agent-reasoning-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(82, 82, 91, 0.3);
+  border-top-color: #10a37f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.agent-reasoning-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* gap-3 */
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .agent-reasoning-actions {
+    flex-direction: row;
+  }
+}
+
+.agent-reasoning-button {
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .agent-reasoning-button {
+    width: auto;
+  }
+}
+
+.agent-reasoning-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #10a37f, 0 0 0 4px rgba(16, 163, 127, 0.2);
+}
+
+.agent-reasoning-button-primary {
+  background-color: #10a37f; /* bg-emerald-500 */
+  color: #000; /* text-black */
+  font-weight: 600; /* font-semibold */
+}
+
+.agent-reasoning-button-primary:hover {
+  background-color: #0d8f6e; /* hover:bg-emerald-400 */
+}
+
+.agent-reasoning-button-secondary {
+  border: 1px solid #3f3f46; /* border-zinc-700 */
+  color: #f4f4f5; /* text-zinc-100 */
+  background-color: transparent;
+}
+
+.agent-reasoning-button-secondary:hover {
+  background-color: #27272a; /* hover:bg-zinc-800 */
+}
+
+.agent-reasoning-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Scrollbar styling for prompt boxes */
+.agent-reasoning-prompt-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.agent-reasoning-prompt-box::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.agent-reasoning-prompt-box::-webkit-scrollbar-thumb {
+  background: #565869;
+  border-radius: 4px;
+}
+
+.agent-reasoning-prompt-box::-webkit-scrollbar-thumb:hover {
+  background: #4d4d4f;
+}
+
+/* Post-choice mode: Used/Unused prompt styling */
+.agent-reasoning-prompt-used .agent-reasoning-prompt-box {
+  border-color: rgba(16, 185, 129, 0.7); /* border-emerald-500/70 */
+  background-color: rgba(16, 185, 129, 0.05); /* bg-emerald-500/5 */
+}
+
+.agent-reasoning-prompt-unused {
+  opacity: 0.6;
+}
+
+.agent-reasoning-prompt-unused .agent-reasoning-prompt-box {
+  border-color: #3f3f46; /* border-zinc-700 */
+  background-color: rgba(24, 24, 27, 0.6); /* bg-zinc-900/60 */
+}
+
+.agent-reasoning-prompt-badge {
+  font-size: 0.625rem; /* text-[10px] */
+  padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 500; /* font-medium */
+  white-space: nowrap;
+}
+
+.agent-reasoning-prompt-badge-used {
+  background-color: rgba(16, 185, 129, 0.1); /* bg-emerald-500/10 */
+  border: 1px solid rgba(16, 185, 129, 0.7); /* border-emerald-500/70 */
+  color: #6ee7b7; /* text-emerald-300 */
+}
+
+.agent-reasoning-prompt-badge-unused {
+  color: #71717a; /* text-zinc-500 */
+}
+
+.agent-reasoning-prompt-badge-edited {
+  font-size: 0.625rem; /* text-[10px] */
+  padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 500; /* font-medium */
+  white-space: nowrap;
+  background-color: rgba(59, 130, 246, 0.1); /* bg-blue-500/10 */
+  border: 1px solid rgba(59, 130, 246, 0.7); /* border-blue-500/70 */
+  color: #93c5fd; /* text-blue-300 */
+}
+
+.agent-reasoning-prompt-badge-edited-inactive {
+  font-size: 0.625rem; /* text-[10px] */
+  padding: 0.125rem 0.5rem; /* px-2 py-0.5 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 500; /* font-medium */
+  white-space: nowrap;
+  color: #71717a; /* text-zinc-500 */
+}
+
+/* Note: Used styling is now handled by .agent-reasoning-prompt-used .agent-reasoning-prompt-box */
+
+/* Answer explanation text */
+.agent-reasoning-answer-explanation {
+  margin-top: 0.5rem;
+  font-size: 0.875rem; /* text-sm */
+  color: #d4d4d8; /* text-zinc-300 */
+  line-height: 1.625;
+}
+
+/* Scrollbar styling for modal content */
+.agent-reasoning-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.agent-reasoning-modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.agent-reasoning-modal-content::-webkit-scrollbar-thumb {
+  background: #565869;
+  border-radius: 4px;
+}
+
+.agent-reasoning-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #4d4d4f;
+}
+

@@ -1,0 +1,112 @@
+/* Markdown Message Styles - Enhanced spacing and indentation for ChatGPT-style cards */
+
+.markdown-message {
+  /* Ensure proper text alignment */
+  text-align: left;
+}
+
+/* Nested list indentation - adjusted for smaller text sizes, indented further */
+.markdown-message ul ul,
+.markdown-message ol ol,
+.markdown-message ul ol,
+.markdown-message ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem; /* 2rem = 32px - more indentation for nested lists */
+  color: rgb(212 212 216); /* zinc-300 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.markdown-message ul ul li,
+.markdown-message ol ol li,
+.markdown-message ul ol li,
+.markdown-message ol ul li {
+  margin-bottom: 0.25rem;
+}
+
+/* Further nested lists - even more indentation */
+.markdown-message ul ul ul,
+.markdown-message ol ol ol,
+.markdown-message ul ul ol,
+.markdown-message ol ol ul {
+  margin-left: 1.75rem; /* Additional indentation for deeper nesting */
+  color: rgb(161 161 170); /* zinc-400 */
+}
+
+/* Ensure headers and paragraphs have no left margin, but allow top/bottom margins for spacing */
+.markdown-message h1,
+.markdown-message h2,
+.markdown-message h3,
+.markdown-message h4,
+.markdown-message h5,
+.markdown-message h6,
+.markdown-message p {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Add spacing above headers (except first one) - this will work with Tailwind classes */
+.markdown-message.prose h1:not(:first-child) {
+  margin-top: 2.5rem !important; /* mt-10 */
+}
+
+.markdown-message.prose h2:not(:first-child) {
+  margin-top: 2rem !important; /* mt-8 */
+}
+
+.markdown-message.prose h3:not(:first-child) {
+  margin-top: 1.5rem !important; /* mt-6 */
+}
+
+.markdown-message.prose h4:not(:first-child) {
+  margin-top: 1.25rem !important; /* mt-5 */
+}
+
+/* Ensure lists are properly indented and markers are visible */
+.markdown-message ul,
+.markdown-message ol {
+  padding-left: 1.5rem; /* Padding for list-outside markers */
+  margin-left: 1.5rem; /* Additional margin for indentation - total 3rem (48px) from left edge */
+  list-style-position: outside; /* Ensure markers are outside */
+}
+
+/* Ensure proper spacing for paragraphs within lists */
+.markdown-message li > p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.markdown-message li > p:first-child {
+  margin-top: 0;
+}
+
+.markdown-message li > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Better spacing for code blocks within lists */
+.markdown-message li > pre {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure proper alignment for all content */
+.markdown-message > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-message > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Better spacing for nested content */
+.markdown-message blockquote p {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.markdown-message blockquote p:last-child {
+  margin-bottom: 0;
+}
+
