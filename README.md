@@ -8,7 +8,7 @@ This prototype addresses the challenge of getting better educational responses f
 
 ## 🎥 Demo Video
 
-Link: <to be added>
+Link: https://www.youtube.com/watch?v=kkVesdn0AhE
 
 ## Features
 
