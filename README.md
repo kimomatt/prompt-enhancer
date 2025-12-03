@@ -2,13 +2,15 @@
 
 An AI-powered tool that improves learning-oriented LLM usage by automatically classifying user intent and rewriting prompts based on selected learning modes (Learning or Socratic).
 
+**Repository**: [https://github.com/kimomatt/prompt-enhancer](https://github.com/kimomatt/prompt-enhancer)
+
 ## Description
 
 This prototype addresses the challenge of getting better educational responses from LLMs. Instead of sending prompts directly, the enhancer analyzes each prompt's learning intent (conceptual, debugging, intuition, etc.), then intelligently rewrites it to encourage deeper understanding. In Learning mode, prompts are expanded to request step-by-step explanations, examples, and exercises. In Socratic mode, the system guides users through discovery by asking clarifying questions first. The tool provides transparent reasoning about its decisions, allowing users to review and choose between original and rewritten prompts before generating the final answer.
 
 ## 🎥 Demo Video
 
-Link: https://www.youtube.com/watch?v=kkVesdn0AhE
+[Watch the demo on YouTube](https://www.youtube.com/watch?v=kkVesdn0AhE)
 
 ## Features
 
@@ -22,7 +24,7 @@ Link: https://www.youtube.com/watch?v=kkVesdn0AhE
 
 ## Tech Stack
 
-- **Frontend**: React, Vite, Tailwind CSS
+- **Frontend**: React, Vite, Tailwind CSS v4
 - **Backend**: FastAPI, Python, SQLite (SQLAlchemy)
 - **LLM**: OpenAI API (configurable model, default: gpt-4o-mini)
 

@@ -768,7 +768,6 @@
   max-width: 44rem; /* increased by ~22% for better readability */
   border-radius: 10px; /* medium-radius */
   background-color: rgba(24, 24, 27, 0.7); /* bg-zinc-900/70 */
-  border: 1px solid rgba(39, 39, 42, 0.7); /* border-zinc-800/70 */
   padding: 0.75rem 1rem; /* reduced padding for Tier 1 */
   box-shadow: none; /* no shadow for base layer */
 }
@@ -779,7 +778,6 @@
   max-width: 44rem; /* increased by ~22% for better readability */
   border-radius: 10px;
   background-color: rgba(24, 24, 27, 0.7);
-  border: 1px solid rgba(39, 39, 42, 0.7);
   padding: 0.75rem 1rem;
 }
 

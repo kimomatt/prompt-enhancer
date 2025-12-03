@@ -13,7 +13,7 @@ import './MarkdownMessage.css';
 function MarkdownMessage({ text }) {
   return (
     <div className="w-full flex justify-center">
-      <div className="max-w-3xl w-full rounded-lg bg-zinc-900/70 border border-zinc-800/70 px-4 py-3">
+      <div className="max-w-3xl w-full px-4 py-3">
         <div className="markdown-message prose prose-invert prose-sm max-w-none leading-relaxed dark:prose-invert">
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
